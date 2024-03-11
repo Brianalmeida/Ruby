@@ -20,3 +20,7 @@ class Blurbalizer
 end
 
 myapp = Blurbalizer.new "The Big Blurb Theory"
+
+myapp.add_a_blurb :moody, "Add more blurbs here"
+
+myapp.show_timeline
