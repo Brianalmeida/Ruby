@@ -1,26 +1,43 @@
-class Blurbalizer
-  def initialize(title)
-    @title		= title
-    @blurbs		= []
+class Blurb
+  attr_accessor :content, :time, :mood
+
+  def initialize(mood, content="")
+    @time   = Time.now
+    @content = content[0..39]
+    @mood   = mood
   end
-  
-  def add_a_blurb(mood, content)
-    # The
-    @blurbs << Blurb.new(mood, content)
+
+  def moodify
+    if @mood == :sad
+      return ":("
+    elsif @mood == :happy
+      return ":)"
+    elsif @mood == :meh
+      return ":|"
+    end
+    ":D"
   end
-  
-  def show_timeline
-    puts "Blurbify: #{@title} has #{@blurbs.count} Blurbs"
-    
-    @blurbs.sort_by { |t|
-      t.time
-      }.reverse.each { |t|
-        puts "#{t.content.ljust(40)}"} #{t.time}"
-	end
 end
 
-myapp = Blurbalizer.new "The Big Blurb Theory"
+class Blurbalizer
+  def initialize(title)
+    @title = title
+    @blurbs = []
+  end
 
-myapp.add_a_blurb :moody, "Add more blurbs here"
+  def add_a_blurb(mood, content)
+    @blurbs << Blurb.new(mood, content)
+  end
 
-myapp.show_timeline
+  def show_timeline
+    puts "Blurbalizer: #{@title} has #{@blurbs.count} Blurbs"
+
+    @blurbs.sort_by { |t|
+      t.time
+    }.reverse.each { |t|
+      puts "#{t.content.ljust(40)} #{t.time}"
+    }
+  end
+end
+
+myapp.show_timelin
