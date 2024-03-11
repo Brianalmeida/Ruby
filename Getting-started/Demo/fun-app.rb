@@ -1,3 +1,7 @@
+# Credit to the TryRuby tutorial 
+# 
+# This is the last exercise of the tutorial
+
 class Blurb
   attr_accessor :content, :time, :mood
 
@@ -7,6 +11,7 @@ class Blurb
     @mood   = mood
   end
 
+  # Setting the moods, if you will 
   def moodify
     if @mood == :sad
       return ":("
@@ -19,6 +24,7 @@ class Blurb
   end
 end
 
+# Defining the blurbalizer class
 class Blurbalizer
   def initialize(title)
     @title = title
@@ -29,6 +35,7 @@ class Blurbalizer
     @blurbs << Blurb.new(mood, content)
   end
 
+  # Printing the title and number of blurbs using count 
   def show_timeline
     puts "Blurbalizer: #{@title} has #{@blurbs.count} Blurbs"
 
@@ -40,4 +47,5 @@ class Blurbalizer
   end
 end
 
+# Wrapping the program up with calling myapp and printing the show_timeline var
 myapp.show_timelin
